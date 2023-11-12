@@ -1,0 +1,44 @@
+﻿@model Flight
+@{
+    ViewData["Title"] = "Cancel flight";
+},
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Cancel flight</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Date"></label>
+            <input asp-for="Date" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="NumberOfSeats"></label>
+            <input asp-for="NumberOfSeats" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="NumberOfLayovers"></label>
+            <input asp-for="NumberOfLayovers" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="FromCity.Name"></label>
+            <input asp-for="FromCity.Name" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="ToCity.Name"></label>
+            <input asp-for="ToCity.Name" class="form-control" readonly />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Cancel</button>
+        <a asp-controller="Flight" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

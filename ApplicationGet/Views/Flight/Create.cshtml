@@ -1,0 +1,51 @@
+﻿@model FlightCities
+@{
+    ViewData["Title"] = "Create flight";
+},
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create flight</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="Flight.Date"></label>
+            <input asp-for="Flight.Date" class="form-control" max="@DateTime.Now.AddYears(1000).ToString("yyyy-dd-MMThh:mm")" value="@DateTime.Today.ToString("yyyy-dd-MMThh:mm")" />
+            <span asp-validation-for="Flight.Date" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.NumberOfSeats"></label>
+            <input asp-for="Flight.NumberOfSeats" class="form-control" />
+            <span asp-validation-for="Flight.NumberOfSeats" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.NumberOfLayovers"></label>
+            <input asp-for="Flight.NumberOfLayovers" class="form-control" />
+            <span asp-validation-for="Flight.NumberOfLayovers" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.FromCity.Name"></label>
+            <select asp-for="Flight.FromCityId" asp-items="new SelectList(@Model.ListOfCities, nameof(City.Id),nameof(City.Name))" class="form-select">
+                Select city
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.ToCity.Name"></label>
+            <select asp-for="Flight.ToCityId" asp-items="new SelectList(@Model.ListOfCities, nameof(City.Id),nameof(City.Name))" class="form-select">
+                Select city
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Flight" asp-action="Overview" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

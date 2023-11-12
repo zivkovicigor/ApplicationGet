@@ -1,0 +1,54 @@
+﻿@model Reservation
+@{
+    ViewData["Title"] = "Approve reservation";
+}
+@* @Html.Partial("~/Views/Shared/_navbar.cshtml", Model) *@
+
+<h1>Edit</h1>
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Approve reservation</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3" hidden>
+            <label asp-for="Flight.Id"></label>
+            <input asp-for="Flight.Id" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.Date"></label>
+            <input asp-for="Flight.Date" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.NumberOfSeats"></label>
+            <input asp-for="Flight.NumberOfSeats" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.NumberOfLayovers"></label>
+            <input asp-for="Flight.NumberOfLayovers" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.FromCity.Name"></label>
+            <input asp-for="Flight.FromCity.Name" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Flight.ToCity.Name"></label>
+            <input asp-for="Flight.ToCity.Name" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="NumberOfSeats"></label>
+            <input asp-for="NumberOfSeats" class="form-control" readonly/>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Approve</button>
+        <a asp-controller="Reservation" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

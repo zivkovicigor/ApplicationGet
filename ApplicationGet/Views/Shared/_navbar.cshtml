@@ -1,0 +1,61 @@
+﻿@model IList<string>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+
+                        <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    @if (Model.FirstOrDefault().Equals("admin"))
+                    {
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Flight" asp-action="Index">Cancel flights</a>
+                        </li>
+
+                    }
+                    @if (Model.FirstOrDefault().Equals("agent"))
+                    {
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Flight" asp-action="Create">Create Flight</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Flight" asp-action="Overview">View Flights</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Reservation" asp-action="Index">Aprove Reservations</a>
+                        </li>
+
+                    }
+                    @if (Model.FirstOrDefault().Equals("visitor"))
+                    {
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Reservation" asp-action="IndexFlights">Make reservation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Reservation" asp-action="IndexUser">View reservations</a>
+                        </li>
+
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-controller="AppRoles" asp-action="Index">Roles</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <partial name="_LoginPartial" />
+    </nav>
+
+</header>

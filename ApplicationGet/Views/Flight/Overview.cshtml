@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Flight>
+@{
+    ViewData["Title"] = "View flights";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Flight list</h2>
+        </div>
+    </div>
+    <br />
+    <table class="table table-stripped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Date
+                </th>
+                <th>
+                    NumberOfSeats
+                </th>
+                <th>
+                    NumberOfLayovers
+                </th>
+                <th>
+                    From City
+                </th>
+                <th>
+                    To City
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                @if(obj.NumberOfSeats < 5)
+                {
+                    <tr class="table-danger">
+                        <td width="15%">
+                            @obj.Date
+                        </td>
+                        <td width="15%">
+                            @obj.NumberOfSeats
+                        </td>
+                        <td width="15%">
+                            @obj.NumberOfLayovers
+                        </td>
+                        <td width="15%">
+                            @obj.FromCity.Name
+                        </td>
+                        <td width="15%">
+                            @obj.ToCity.Name
+                        </td>
+
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td width="15%">
+                            @obj.Date
+                        </td>
+                        <td width="15%">
+                            @obj.NumberOfSeats
+                        </td>
+                        <td width="15%">
+                            @obj.NumberOfLayovers
+                        </td>
+                        <td width="15%">
+                            @obj.FromCity.Name
+                        </td>
+                        <td width="15%">
+                            @obj.ToCity.Name
+                        </td>
+
+                    </tr>
+                }
+                
+            }
+        </tbody>
+    </table>
+
+</div>

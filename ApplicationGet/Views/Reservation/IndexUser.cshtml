@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Reservation>
+@{
+    ViewData["Title"] = "View reservations";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Reservation list</h2>
+        </div>
+    </div>
+    <br />
+    <table class="table table-stripped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Number of seats
+                </th>
+                <th>
+                    From city
+                </th>
+                <th>
+                    To city
+                </th>
+                <th>
+                    Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="15%">
+                        @User.Identity.Name
+                    </td>
+                    <td width="15%">
+                        @obj.Status
+                    </td>
+                    <td width="15%">
+                        @obj.NumberOfSeats
+                    </td>
+                    <td width="15%">
+                        @obj.Flight.FromCity.Name
+                    </td>
+                    <td width="15%">
+                        @obj.Flight.ToCity.Name
+                    </td>
+                    <td width="15%">
+                        @obj.Flight.Date
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
